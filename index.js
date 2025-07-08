@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const TelegramBot = require('node-telegram-bot-api');
+const express = require('express');
 
 // Вставь сюда свой токен:
 const token = process.env.BOT_TOKEN;
@@ -29,4 +30,17 @@ bot.on('message', (msg) => {
   } else if (text.includes('выспалась')) {
     bot.sendMessage(chatId, 'Почти.');
   }
+});
+
+
+// 🚀 Добавляем минимальный Express-сервер для UptimeRobot
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.send('Бот работает и не спит 💤');
+});
+
+app.listen(PORT, () => {
+  console.log(`Сервер слушает на порту ${PORT}`);
 });
