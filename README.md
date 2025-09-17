@@ -28,9 +28,9 @@ This project is a simple Telegram bot that automatically replies to predefined q
 
 3. Add two files:
 
-4. index.js (main code of the bot)
+- index.js (main code of the bot)
 
-5. .env (to store your API token)
+- .env (to store your API token)
 
  **Install Dependencies**
 
