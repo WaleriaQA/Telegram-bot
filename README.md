@@ -65,7 +65,7 @@ https://your-project-name.username.repl.co/
 
 5. Set the interval to every 5 minutes
 
-   ⚠️ Important Note
+⚠️ Important Note
 
 Even with UptimeRobot, the bot will NOT run 24/7 if you are using only free versions of Replit and UptimeRobot.
 
