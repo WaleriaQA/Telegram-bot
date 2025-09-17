@@ -10,7 +10,7 @@ This project is a simple Telegram bot that automatically replies to predefined q
 
 - Runs on Replit with a small Express server to stay alive with UptimeRobot pings;
 
-- 📦 Setup Instructions
+ 📦 Setup Instructions
 
 **Create a Telegram Bot**
 
