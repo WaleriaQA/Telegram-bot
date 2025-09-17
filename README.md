@@ -12,7 +12,7 @@ This project is a simple Telegram bot that automatically replies to predefined q
 
 - 📦 Setup Instructions
 
-  **Create a Telegram Bot**
+**Create a Telegram Bot**
 
 1. Open Telegram and search for @BotFather
 
@@ -20,7 +20,7 @@ This project is a simple Telegram bot that automatically replies to predefined q
 
 3. Copy your API token (you’ll need it later)
 
-  **Create a Replit Project**
+ **Create a Replit Project**
 
 1. Go to https://replit.com
 
@@ -32,7 +32,7 @@ This project is a simple Telegram bot that automatically replies to predefined q
 
 5. .env (to store your API token)
 
-   **Install Dependencies**
+ **Install Dependencies**
 
 1. In the Replit shell, run:
 
