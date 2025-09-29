@@ -29,14 +29,26 @@ bot.on("message", async (ctx) => {
   }
 });
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
+  console.log("Webhook called with method:", req.method, "body:", req.body);
+
+  // Проверка переменных окружения
+  if (!process.env.BOT_TOKEN || !process.env.WEATHER_API_KEY) {
+    console.error("⚠️ Ошибка: отсутствуют необходимые переменные окружения!");
+    console.error("BOT_TOKEN =", process.env.BOT_TOKEN);
+    console.error("WEATHER_API_KEY =", process.env.WEATHER_API_KEY);
+    return res.status(500).send("Missing environment variables");
+  }
+
   if (req.method === "POST") {
     try {
       await bot.handleUpdate(req.body);
+      return res.status(200).send("ok");
     } catch (err) {
-      console.error("Error handling update", err);
+      console.error("Ошибка при обработке обновления:", err);
+      return res.status(500).send("Error handling update");
     }
-    return res.status(200).send("ok");
   }
-  res.status(200).send("Bot is running");
-};
+
+  res.status(200).send("Bot is running 🚀");
+}
