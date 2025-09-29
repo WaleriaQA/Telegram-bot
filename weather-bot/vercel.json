@@ -5,5 +5,5 @@
   ],
   "routes": [
     { "src": "/webhook", "dest": "/index.js" }
-  ],
+  ]
 }
