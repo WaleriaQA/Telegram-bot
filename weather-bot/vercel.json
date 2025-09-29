@@ -1,10 +1,9 @@
 {
-  "functions": {
-    "api/**": {
-      "includeFiles": "node_modules/telebot/plugins/**"
-    }
-  },
-  "github": {
-    "silent": true
-  }
+  "version": 2,
+  "builds": [
+    { "src": "index.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/webhook", "dest": "/index.js" }
+  ],
 }
