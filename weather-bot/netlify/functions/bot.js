@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const { Telegraf } = require("telegraf");
 const axios = require("axios");
 
@@ -11,12 +15,16 @@ const weatherEmoji = {
   "50d": "🌫️", "50n": "🌫️"
 };
 
+
+
 bot.start((ctx) => ctx.reply("Hello, send me your location 🌍"));
 
 bot.on("message", async (ctx) => {
   if (ctx.message.location) {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${ctx.message.location.latitude}&lon=${ctx.message.location.longitude}&appid=${process.env.WEATHER_API_KEY}&units=metric`;
 
+    console.log(url);
+    
     const response = await axios.get(url);
 
     ctx.reply(`${response.data.name} : ${Math.round(response.data.main.temp)}°C`);
@@ -29,26 +37,30 @@ bot.on("message", async (ctx) => {
   }
 });
 
-export default async function handler(req, res) {
-  console.log("Webhook called with method:", req.method, "body:", req.body);
+// === Netlify Function ===
+exports.handler = async (event, context) => {
+  console.log("Webhook called:", event.httpMethod);
 
   // Проверка переменных окружения
   if (!process.env.BOT_TOKEN || !process.env.WEATHER_API_KEY) {
-    console.error("⚠️ Ошибка: отсутствуют необходимые переменные окружения!");
-    console.error("BOT_TOKEN =", process.env.BOT_TOKEN);
-    console.error("WEATHER_API_KEY =", process.env.WEATHER_API_KEY);
-    return res.status(500).send("Missing environment variables");
+    console.error("⚠️ Missing environment variables!");
+    return { statusCode: 500, body: "Missing environment variables" };
   }
 
-  if (req.method === "POST") {
+  // Обработка обновлений от Telegram
+  if (event.httpMethod === "POST") {
     try {
-      await bot.handleUpdate(req.body);
-      return res.status(200).send("ok");
+      const body = JSON.parse(event.body);
+      await bot.handleUpdate(body);
+      return { statusCode: 200, body: "ok" };
     } catch (err) {
-      console.error("Ошибка при обработке обновления:", err);
-      return res.status(500).send("Error handling update");
+      console.error("Error handling update:", err);
+      return { statusCode: 500, body: "Error handling update" };
     }
   }
 
-  res.status(200).send("Bot is running 🚀");
-}
+  // Ответ на GET-запрос (проверка, что функция жива)
+  const catEmojis = ["🐱","😺","😸","😹","😻","😼","😽","🙀","😿","😾"];
+  const randomCat = catEmojis[Math.floor(Math.random() * catEmojis.length)];
+  return { statusCode: 200, body: `Bot is running ${randomCat} 🚀` };
+};

@@ -1,19 +1,15 @@
 {
   "name": "weather-bot",
   "version": "1.0.0",
-  "type": "module",
+  "main": "netlify/functions/bot.js",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bot.js"
+    "dev": "netlify dev",
+    "start": "node netlify/functions/bot.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "axios": "^1.12.2",
-    "dotenv": "^17.2.2",
-    "express": "^5.1.0",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
     "telegraf": "^4.16.3"
   }
 }
