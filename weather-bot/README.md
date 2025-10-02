@@ -124,6 +124,7 @@ Option B — Dashboard:
 
 Put this into netlify/functions/bot.js (minimal, safe handler — GET shows random cat + rocket, POST processes Telegram update):
 
+```js
 // netlify/functions/bot.js
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -171,7 +172,7 @@ exports.handler = async (event) => {
   const randomCat = catEmojis[Math.floor(Math.random() * catEmojis.length)];
   return { statusCode: 200, body: `Bot is running ${randomCat} 🚀` };
 };
-
+```
 
 Important:
 
