@@ -424,9 +424,8 @@ Cypress creates the following folder structure automatically:
 
 **cypress/**
 
-  **e2e/**
-
-    **bot_healthcheck.cy.js  ← your test file**
+  **e2e/
+       bot_healthcheck.cy.js  ← your test file**
     
   **fixtures/**
  
