@@ -413,13 +413,16 @@ Test via Telegram.
  
 
 🧪 Tests
+
 This project uses Cypress for end-to-end (E2E) testing. Although these are defined as E2E tests in Cypress, they effectively serve as integration tests, verifying the live Netlify Function endpoint of the Telegram bot. 
 
 🧰 Installation
+
 If you haven’t installed Cypress yet, run:
 **npm install cypress --save-dev**
 
 🧩 Project structure
+
 Cypress creates the following folder structure automatically:
 
 **cypress/**
@@ -434,6 +437,7 @@ Cypress creates the following folder structure automatically:
 **cypress.config.js**
 
 ✍️ Example test
+
 Here’s a simple test that checks if your Netlify bot endpoint is alive:
 ```js
 // cypress/e2e/bot_healthcheck.cy.js
@@ -447,6 +451,7 @@ describe('Bot healthcheck', () => {
 ```
 
 🚀 How to run tests
+
 Open Cypress UI:
 **npx cypress open**
 Then select **E2E Testing → Chrome (or any browser)** → Start E2E Testing in Chrome,
@@ -456,6 +461,7 @@ Or run all tests headlessly (in CI or terminal):
 **npx cypress run**
 
 ⚙️ .gitignore setup
+
 Make sure to ignore temporary Cypress files:
 
 ## Cypress artifacts
