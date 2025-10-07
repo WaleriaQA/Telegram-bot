@@ -421,15 +421,16 @@ If you haven’t installed Cypress yet, run:
 
 🧩 Project structure
 Cypress creates the following folder structure automatically:
+
 **cypress/**
 
-**  e2e/**
+  **e2e/**
 
-    **bot_healthcheck.cy.js   ← your test file**
+    **bot_healthcheck.cy.js  ← your test file**
     
- ** fixtures/**
+  **fixtures/**
  
- ** support/**
+  **support/**
  
 **cypress.config.js**
 
