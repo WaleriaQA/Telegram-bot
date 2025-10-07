@@ -410,3 +410,58 @@ Test via Telegram.
 * Always check function logs in Netlify console — they show the exact runtime exceptions.
 
 * If you still hit 502 after checking code and env vars, copy the exact error stack from Netlify logs and paste it into an issue/PR or ask for help — that stacktrace is the fastest route to a fix.
+* 
+
+🧪 Tests
+This project uses Cypress for end-to-end (E2E) testing. Although these are defined as E2E tests in Cypress, they effectively serve as integration tests, verifying the live Netlify Function endpoint of the Telegram bot. 
+
+🧰 Installation
+If you haven’t installed Cypress yet, run:
+**npm install cypress --save-dev**
+
+🧩 Project structure
+Cypress creates the following folder structure automatically:
+**cypress/
+  e2e/
+    bot_healthcheck.cy.js   ← your test file
+  fixtures/
+  support/
+cypress.config.js**
+
+✍️ Example test
+Here’s a simple test that checks if your Netlify bot endpoint is alive:
+```js
+// cypress/e2e/bot_healthcheck.cy.js
+describe('Bot healthcheck', () => {
+  it('should return "Bot is running 🚀"', () => {
+    cy.request('https://waleriaqaweatherbot.netlify.app/.netlify/functions/bot')
+      .its('body')
+      .should('include', 'Bot is running');
+  });
+});
+```
+
+🚀 How to run tests
+Open Cypress UI:
+**npx cypress open**
+Then select **E2E Testing → Chrome (or any browser)** → Start E2E Testing in Chrome,
+and click on **bot_healthcheck.cy.js** to run the test visually.
+
+Or run all tests headlessly (in CI or terminal):
+**npx cypress run**
+
+⚙️ .gitignore setup
+Make sure to ignore temporary Cypress files:
+
+# Cypress artifacts
+**cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+.cypress-cache/**
+
+
+
+
+
+
+
