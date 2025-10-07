@@ -454,11 +454,15 @@ Or run all tests headlessly (in CI or terminal):
 Make sure to ignore temporary Cypress files:
 
 ## Cypress artifacts
+
 **cypress/screenshots/**
+
 
 **cypress/videos/**
 
+
 **cypress/downloads/**
+
 
 **.cypress-cache/**
 
