@@ -3,3 +3,10 @@ node_modules/
 
 # Local Netlify folder
 .netlify
+
+# Cypress stuff
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+cypress/reports/
+.cypress-cache/

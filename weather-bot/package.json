@@ -5,11 +5,15 @@
   "license": "MIT",
   "scripts": {
     "dev": "netlify dev",
-    "start": "node netlify/functions/bot.js"
+    "start": "node netlify/functions/bot.js",
+    "test:cypress": "cypress run"
   },
   "dependencies": {
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",
     "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "cypress": "^15.3.0"
   }
 }
